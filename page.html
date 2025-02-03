@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  class="icon"rel="icon" href="https://appexchange.salesforce.com/partners/servlet/servlet.FileDownload?file=00P4V00000uEXFvUAO">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Flosum Clone</title>
+    <style>
+        * {
+            margin:0px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+           
+            
+        }
+        body {
+           background: white;
+            color: rgb(0, 0, 0);
+            text-align: center;
+           user-select: none;
+            background-size: auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.959);
+            
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+        }
+        .logo img {
+            height: 40px;
+        }
+        .nav {
+            display: flex;
+            gap: 30px;
+            
+        }
+        .nav a {
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav a:hover {
+            color: #ff4a7d;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .cta-buttons button {
+            background: blue;
+            color: rgb(251, 245, 245);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .cta-buttons button:hover {
+            background: #0056b3;
+        }
+        .sng {
+            background: transparent;
+            color: rgb(0, 0, 0);
+        }
+        .hero-section {
+            margin-top: 74px;
+            padding: 10%;
+            text-align: center;
+            background-image: url("https://cdn.prod.website-files.com/6723ebcb19cb0dda58aff8ef/67248973a961e2efd7679ba7_flosum-bg-min.jpg");
+            background-size: cover;
+        }
+        .hero-section h1 {
+            font-family: arial,sans-serif;
+            font-size: 2rem;
+            color: #ff4a7d;
+            margin-bottom: 10px;
+        }
+        .hero-section p {
+            font-size: 18px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .buttons button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .buttons button:hover {
+            background: #0056b3;
+        }
+        .call-us {
+            font-size: 16px;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+        }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .menu-toggle div {
+            width: 30px;
+            height: 3px;
+            background: rgb(0, 0, 0);
+            margin: 5px;
+        }
+        .nnn{
+            background-color: aliceblue;
+            color: rgba(0, 0, 0, 0.681);
+            padding: 10%;
+            font-family: Arial;
+            font-size: 24px;
+            text-align:inherit;
+            
+        }
+        .slide-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+           
+            text-align: start;
+            max-width: 600px;
+           
+        }
+        h1 {
+            color: #ff4a7d;
+            font-family: 'Courier New', Courier, monospace,bold;
+            margin-bottom: 20px;
+            
+        }
+
+        p {
+            color: rgb(0, 36, 155);
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size:medium;
+            user-select: none;
+            font-weight: bold;
+            
+        }
+        .nnn1 {
+            color: #717171;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 300;font-size: 100%;
+
+            
+        }
+  
+        .importance-scale {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .importance-scale span {
+            margin: 0 10px;
+            color: rgb(27, 26, 26);
+            font-weight: bold;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 500px) {
+            .slide-container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+            .importance-scale span {
+                font-size: 0.8em;
+            }
+            button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+        }
+      
+        
+
+
+        .slideshow-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #f5f5f5;
+            padding: 5px;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+        }
+        .slide {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-direction: row;
+        }
+        .slide img {
+            width: 50%;
+            border-radius: 10px;
+        }.slide-container {
+            
+            width: 50%;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+           background:transparent;
+        }
+        .importance-scale {
+            margin: 10px 0;
+        }
+        .importance-scale input {
+            width: 100%;
+            border:2px solid black;
+            border-color: #ff4a7d 2px solid;
+            background: #ff4a7d;
+            height: 0px;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            user-select: none;
+        }
+        .prev { left: -50px; }
+        .next { right: -50px; }
+        .dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .active { background-color: #717171; }
+
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -30px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@media (max-width: 768px) {
+            .slide {
+                flex-direction: column;
+                text-align: center;
+            }
+            .slide img {
+                width: 100%;
+            }
+            .slide-container {
+                width: 100%;
+            }
+            .prev, .next {
+                top: 90%;
+                transform: translateY(-50%);
+            }
+            .prev { left: 10px; }
+            .next { right: 10px; }
+        }
+
+
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.8);
+                padding: 15px;
+                border-radius: 10px;
+                width: 100%;
+                text-align: left;
+            }
+            .nav.active {
+                display: flex;
+                width: 100%;
+                padding-left: 10%;
+            }
+            .nav a {
+                color: white;
+                padding: 10px;
+                display: block;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .cta-buttons {
+                display: none;
+            }
+        }
+        .slide{
+          width:auto;
+        align-items: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="https://cdn.prod.website-files.com/6723ebcb19cb0dda58aff8ef/672a016092488c2e4f26152d_flosum-dark-logo.svg" alt="Flosum Logo">
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="nav">
+            <a href="#">Products <i class="fa-solid fa-angle-down"></i></a>
+            <a href="#">Solutions <i class="fa-solid fa-angle-down"></i></a>
+            <a href="#">Resources </a>
+            <a href="#">Support </a>
+            <a href="#">Company <i class="fa-solid fa-angle-down"></i></a>
+        </div>
+        <div class="cta-buttons">
+            <span class="call-us">Call us: (844) 335-6786</span>
+            <button>Sign In</button>
+            <button>Talk to an expert</button>
+        </div>
+    </div>
+    <div class="hero-section">
+        <h1>Which Backup & Archive features are most important to you?</h1>
+        <p>Calculate their value and see how Flosum measures up.</p>
+        <div class="buttons">
+            <button>We Have Basic Backup & Archive Needs</button>
+            <button>We Have More Complex Backup & Archive Needs</button>
+        </div>
+    </div>
+    <div class="nnn">
+        <p class="nnn1">Unlike traditional solutions involving full and incremental backups, Flosum's Composite Backup retrieves new, changed, and deleted data from Salesforce and joins it with the unchanged data already in your backup container. This innovative approach ensures significantly reduced backup time and complexity. 
+          </p>
+          <br>
+          
+          <p  class="nnn1"> With Flosum Backup & Archive, Salesforce downtime is kept to a minimum when you need to recover data and adhere to Recovery Time Objectives (RTOS). Users bring their own security key that protects their data while in-flight and at-rest. Flosum's secure off-site backups bring an important level of protection for your data.</p>
+    </div>
+    <div class="slideshow-wrapper">
+      <div class="slideshow-container">
+        
+       
+        <div class="slide">
+          <img src="https://www.strident.co.uk/images/6S-graphics/2023-graphic-secure.png" style="width:10">
+    
+          <div class="slide-container">
+            <h1>Figuring out quickly what you need to restore</h1>
+            <p>Starting a restore immediately instead of spending hours and days figuring out what needs to be restored.</p>
+            <div class="importance-scale">
+              <span>Not Important</span>
+              <input type="range" min="1" max="5" value="5" disabled>
+              <span>Very Important</span>
+            </div>
+            <button onclick="changeSlide(1)">Next</button>
+          </div>
+        </div>
+    
+      
+        <div class="slide">
+
+          <img src="https://cloudtech24.com/wp-content/uploads/2023/09/3D-Imagery-54.png" style="width:10">
+          <div class="slide-container">
+            <h1>Restoration made simpler</h1>
+            <p>Save time by following a structured approach to restoring your data efficiently.</p>
+            <div class="importance-scale">
+              <span>Not Important</span>
+              <input type="range" min="1" max="5" value="4" disabled>
+              <span>Very Important</span>
+            </div>
+            <button onclick="changeSlide(1)">Next</button>
+          </div>
+        </div>
+    
+        
+        <div class="slide">
+          <img src="https://static.vecteezy.com/system/resources/thumbnails/012/487/854/small_2x/3d-data-security-protection-icon-businessman-hand-holding-shield-floating-on-transparent-protect-business-data-network-security-computer-concept-cartoon-minimal-style-3d-render-illustration-png.png" style="width:10">
+    
+          <div class="slide-container">
+            <h1>Securing Your Restored Data</h1>
+            <p>Ensure that your restored data remains secure and protected against further loss.</p>
+            <div class="importance-scale">
+              <span>Not Important</span>
+              <input type="range" min="1" max="5" value="3" disabled>
+              <span>Very Important</span>
+            </div>
+            <button onclick="changeSlide(1)">Next</button>
+          </div>
+        </div>
+    
+        
+        <div class="slide">
+          <img src="https://static.vecteezy.com/system/resources/thumbnails/024/701/409/small_2x/protective-shield-check-mark-with-document-folder-3d-illustration-data-storage-security-protection-png.png" style="width:10">
+          <div class="slide-container">
+            <h1>Data Backup Strategies</h1>
+            <p>Plan ahead with multiple backup strategies to avoid data loss in the future.</p>
+            <div class="importance-scale">
+              <span>Not Important</span>
+              <input type="range" min="1" max="5" value="2" disabled>
+              <span>Very Important</span>
+            </div>
+            <button onclick="changeSlide(1)">Next</button>
+          </div>
+        </div>
+    
+
+        <div class="slide">
+          <img src="https://cloudtech24.com/wp-content/uploads/2023/09/3D-Imagery-54.png" style="width:9">
+    
+          <div class="slide-container">
+            <h1>Finalizing Your Data Recovery</h1>
+            <p>Verify your restored data and ensure everything is back to normal.</p>
+            <div class="importance-scale">
+              <span>Not Important</span>
+              <input type="range" min="1" max="5" value="5" disabled>
+              <span>Very Important</span>
+            </div>
+            <button onclick="setCurrentSlide(1)">Reveal Your Results</button>
+          </div>
+        </div>
+    
+       
+       
+      </div>
+    </div>
+    
+
+    <div class="dots">
+      <span class="dot" onclick="setCurrentSlide(1)"></span>
+      <span class="dot" onclick="setCurrentSlide(2)"></span>
+      <span class="dot" onclick="setCurrentSlide(3)"></span>
+      <span class="dot" onclick="setCurrentSlide(4)"></span>
+      <span class="dot" onclick="setCurrentSlide(5)"></span>
+    </div>
+    <script>
+        function toggleMenu() {
+    const nav = document.querySelector('.nav');
+    nav.classList.toggle('active');
+}
+
+        let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function changeSlide(n) {
+      showSlides(slideIndex += n);
+  }
+
+  function setCurrentSlide(n) {
+      showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+      let slides = document.querySelectorAll(".slide");
+      let dots = document.querySelectorAll(".dot");
+
+      if (n > slides.length) { slideIndex = 1; }
+      if (n < 1) { slideIndex = slides.length; }
+
+      slides.forEach(slide => slide.style.display = "none");
+      dots.forEach(dot => dot.classList.remove("active"));
+
+      slides[slideIndex - 1].style.display = "flex";
+      dots[slideIndex - 1].classList.add("active");
+  }
+</script>
+    
+</body>
+</html>
